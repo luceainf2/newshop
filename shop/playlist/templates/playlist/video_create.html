@@ -1,0 +1,13 @@
+{% extends 'core/base.html' %}
+{% block title %}САЙТ | New video{% endblock %}
+{% block head %}{% endblock %}
+{% block main %}
+    <h1 class="text-center mt-5">New video</h1>
+   <div class="frc mt-5">
+       <form class="fccc gap-2" method="post"  action="{% url 'video_create' %}">
+           {% csrf_token %}
+           <input class="form-control" type="text" name="embed_code">
+           <button class="btn btn-primary" type="submit" name="">Send</button>
+       </form>
+   </div>
+{% endblock %}

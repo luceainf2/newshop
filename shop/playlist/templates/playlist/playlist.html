@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}САЙТ | Play {% endblock %}
+{% block main %}
+    <div class="frcc gap-3 mt-5">
+        <h1 class="text-center">Play List</h1>
+        <a class="btn btn-success fw-6" href="{% url 'video_create' %}">New</a>
+    </div>
+
+    <div class="frc mw-1000 gap-2 flex-wrap">
+        {% for video in videos %}
+            <div class="rounded-3 mw-350px">
+                <iframe src="https://www.youtube.com/embed/{{ video.embed_code }}"
+                        class="w-100"
+                        title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                </iframe>
+                <div class="frsc gap-2">
+                    <form method="post" action="{% url 'video_like' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="video_id" value="{{ video.id }}">
+                        <button type="submit">
+                            <img width="24" src="{% static 'core/img/heart.png' %}" alt="">
+                        </button>
+                    </form>
+                    <span>{{ video.likes }}</span>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
