@@ -8,8 +8,9 @@ class Product(models.Model):
     discount = models.PositiveSmallIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    description = models.TextField()
-    rating = models.FloatField(blank=True, null=True)
+    description = models.TextField(max_length=100)
+    rating = models.FloatField(blank=True, default=0.0)
+    is_available = models.BooleanField(default=True)
 
 
 class Order(models.Model):

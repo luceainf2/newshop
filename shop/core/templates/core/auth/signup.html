@@ -1,0 +1,20 @@
+
+{% extends 'core/base.html' %}
+{% block title %}
+	SIGN UP
+{% endblock %}
+{% block content %}
+	<h1 class="text-body text-center fw-bold mb-4">Sign Up</h1>
+    {% if error  %}
+        <p class="text-center text-danger fw-bold">{{ error }}</p>
+    {% endif %}
+    <div class="d-flex gap-3 flex-wrap justify-content-center mx-auto">
+    <form class="d-flex flex-column gap-3" method="post"  >{% csrf_token %}
+        <input type="text" name="username" placeholder="username" class="form-control text-center">
+        <input type="text" name="Email" placeholder="Email" class="form-control text-center">
+        <input type="text" name="password" placeholder="password" class="form-control text-center">
+        <input type="text" name="repeat_password" placeholder="repeatpass" class="form-control text-center">
+        <button type="submit" class="btn btn-secondary" >Confirm</button>
+    </form>
+    </div>
+{% endblock %}

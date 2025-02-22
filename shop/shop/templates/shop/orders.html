@@ -1,0 +1,26 @@
+{%extends 'core/base.html' %}
+{% load static %}
+{% block title %}Каталог{% endblock %}
+{% block content %}
+    <h1 class="text-dark text-center fw-bold mb-4">заказы</h1>
+    <div class="d-flex gap-3 flex-wrap justify-content-center mx-auto"
+    style="max-width: 700px">
+    {% for order in orders %}
+          <div class="d-flex flex-column text-center border-0 rounded-4 text-nowrap px-4  py-2 card"
+          style="width: min-content;box-shadow: 0 0 5px gray;">
+        <span class="align-self-start fw-bold fs-5">
+            {{ order.id }}
+        </span>
+         <span>
+             {{ order.product.name }}
+         </span>
+          <span>
+              {{ order.delivery_address }}
+          </span>
+          <span>
+              {{ order.created_at }}
+          </span>
+    </div>
+    {% endfor %}
+    </div>
+{% endblock %}
