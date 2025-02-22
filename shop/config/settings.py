@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
 
+from django.contrib.auth.context_processors import auth
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-in61d$9^ifjthe8@iba*$v%3jnlhv693cqn6k0zve30)dd+lj#'
 DEBUG = True
@@ -28,7 +30,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'config.urls'
+ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
     {
